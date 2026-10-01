@@ -11,14 +11,13 @@ const fetchTmdb = async <T>(endpoint: string): Promise<T> => {
             Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
         },
         next: { revalidate: 3600 },
-    })
-        .then(value => value.json())
+    });
 
     if (!res.ok) {
         throw new Error(`TMDB error ${res.status}: ${endpoint}`);
     }
 
-    return res;
+    return res.json();
 };
 
 export const getAllMovies = async ():Promise<IMovieResponse> =>
@@ -30,5 +29,8 @@ export const getMovieById = async (id: string):Promise<IMovieDetails> =>
 export const getGenres = async ():Promise<IGenreResponse>=>
     await fetchTmdb<IGenreResponse>('/genre/movie/list');
 
-export const searchMovie = async (query: string, page: number) =>
-    await fetchTmdb<IGenreResponse>('/search/movie')
+export const searchMovie = async (query: string, page: number = 1):Promise<IMovieResponse> =>
+    await fetchTmdb<IMovieResponse>(`/search/movie?query=${encodeURIComponent(query)}&page=${page}`);
+
+export const getTopRatedMovies = async (page: number = 1):Promise<IMovieResponse> =>
+    await fetchTmdb<IMovieResponse>(`/movie/top_rated?page=${page}`);
