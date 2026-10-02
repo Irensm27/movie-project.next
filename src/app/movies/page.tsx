@@ -1,9 +1,13 @@
 import React from 'react';
+import {getAllMovies, getGenres} from "@/src/services/movie.api.service";
+import MoviesList from "@/src/components/movieComponents/MoviesList";
 
-const MoviesPage = () => {
+const MoviesPage = async () => {
+    const movies = await getAllMovies();
+    const genres = await getGenres();
     return (
         <div>
-            MoviesPage
+            <MoviesList movies={movies.results} genres={genres.genres}/>
         </div>
     );
 };
