@@ -20,8 +20,8 @@ const fetchTmdb = async <T>(endpoint: string): Promise<T> => {
     return res.json();
 };
 
-export const getAllMovies = async ():Promise<IMovieResponse> =>
-    await fetchTmdb<IMovieResponse>('/discover/movie');
+export const getAllMovies = async (page:number=1):Promise<IMovieResponse> =>
+    await fetchTmdb<IMovieResponse>(`/discover/movie?page=${page}`);
 
 export const getMovieById = async (id: string):Promise<IMovieDetails> =>
     await fetchTmdb<IMovieDetails>(`/movie/${id}`);
