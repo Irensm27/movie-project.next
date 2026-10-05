@@ -9,7 +9,7 @@ const PosterPreview: FC<PosterPreviewProps> = ({posterPath, title}) => {
 
     if (!posterPath) {
         return (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            <div className="flex aspect-[2/3] w-full items-center justify-center bg-neutral-800 text-center text-sm text-neutral-400">
                 No poster available
             </div>
         );
