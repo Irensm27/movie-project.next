@@ -10,10 +10,6 @@ const Sort = () => {
     const handleSort = (sortBy: string) => {
         const params = new URLSearchParams(searchParams.toString());
 
-        // ПРАВКА: цей рядок скидає вибраний жанр при сортуванні — його варто прибрати,
-        // щоб жанр і сортування працювали разом
-        params.delete('genre');
-
         params.set('sort', sortBy);
         params.set('page', '1');
 

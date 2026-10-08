@@ -3,7 +3,7 @@ import {IMovie} from "@/src/models/movieModels/IMovie";
 import {IGenre} from "@/src/models/genreModels/IGenre";
 import Link from "next/link";
 import PosterPreview from "@/src/components/movieComponents/PosterPreview";
-import StarsRating from "@/src/components/movieComponents/StarRating";
+import StarsRating from "@/src/components/movieComponents/StarsRating";
 import MovieInfo from "@/src/components/movieComponents/MovieInfo";
 
 interface IMovieListCardProps {
