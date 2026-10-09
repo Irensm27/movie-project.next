@@ -1,16 +1,22 @@
-import type {FC} from "react";
+import type { FC } from "react";
 
 type PosterPreviewProps = {
     posterPath: string | null;
     title: string;
 };
 
-const PosterPreview: FC<PosterPreviewProps> = ({posterPath, title}) => {
+const PosterPreview: FC<PosterPreviewProps> = ({ posterPath, title }) => {
 
     if (!posterPath) {
         return (
-            <div className="flex aspect-[2/3] w-full items-center justify-center bg-neutral-800 text-center text-sm text-neutral-400">
-                No poster available
+            <div className="flex aspect-[2/3] w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-[#211735] to-[#0B0914] px-4 text-center">
+                <span className="text-5xl text-violet-400/70">
+                    🎬
+                </span>
+
+                <p className="text-sm font-medium text-purple-200/60">
+                    No poster available
+                </p>
             </div>
         );
     }
@@ -21,9 +27,11 @@ const PosterPreview: FC<PosterPreviewProps> = ({posterPath, title}) => {
         <img
             src={posterUrl}
             alt={title}
-            className="aspect-[2/3] w-full object-cover"
+            loading="lazy"
+            className="aspect-[2/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
     );
 };
 
 export default PosterPreview;
+

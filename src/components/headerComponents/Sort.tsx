@@ -7,30 +7,61 @@ const Sort = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
+    // Отримуємо поточне сортування з URL
+    const currentSort = searchParams.get('sort') || 'popularity.desc';
+
+    // Змінюємо спосіб сортування фільмів
     const handleSort = (sortBy: string) => {
+        // Копіюємо поточні параметри URL
         const params = new URLSearchParams(searchParams.toString());
 
+        // Записуємо вибране сортування
         params.set('sort', sortBy);
+
+        // Після зміни сортування переходимо на першу сторінку
         params.set('page', '1');
 
+        // Оновлюємо URL
         router.push(`${pathname}?${params.toString()}`);
     };
 
+    // Спільні стилі для всіх кнопок
+    const buttonClass = (sortBy: string) => `
+        rounded-lg px-3 py-2 text-sm font-medium transition
+        active:scale-95
+        ${currentSort === sortBy
+        ? 'bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-md shadow-purple-900/20'
+        : 'text-purple-200 hover:bg-purple-500/20 hover:text-white'
+}
+`;
+
     return (
-        <div className="flex gap-2">
-            <button onClick={() => handleSort('popularity.desc')}>
+        <div className="flex flex-wrap items-center gap-2 rounded-xl border border-purple-500/20 bg-[#171126] p-1.5">
+
+            <button
+                onClick={() => handleSort('popularity.desc')}
+                className={buttonClass('popularity.desc')}
+            >
                 Popular
             </button>
 
-            <button onClick={() => handleSort('vote_average.desc')}>
+            <button
+                onClick={() => handleSort('vote_average.desc')}
+                className={buttonClass('vote_average.desc')}
+            >
                 Top Rated
             </button>
 
-            <button onClick={() => handleSort('release_date.desc')}>
+            <button
+                onClick={() => handleSort('release_date.desc')}
+                className={buttonClass('release_date.desc')}
+            >
                 Newest
             </button>
+
         </div>
     );
 };
 
 export default Sort;
+

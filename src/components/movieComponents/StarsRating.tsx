@@ -1,8 +1,5 @@
 import type {FC} from "react";
 
-// ПРАВКА: у завданні компонент називається StarsRating — файл варто перейменувати
-// на StarsRating.tsx (і оновити імпорт у MovieListCard.tsx)
-
 type StarsRatingProps = {
     rating: number;
 };

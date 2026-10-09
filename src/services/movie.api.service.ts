@@ -33,6 +33,7 @@ export const getMovies = async ({page = 1, query, sortBy, genre,}: IMovieFilters
 
     params.set('page', String(page));
 
+
     if (query) {
         params.set('with_text_query', query);
     }
@@ -57,7 +58,11 @@ export const getMovies = async ({page = 1, query, sortBy, genre,}: IMovieFilters
 
     return await fetchTmdb<IMovieResponse>(
         `/discover/movie?${params.toString()}`
+
+
     );
+
+
 };
 
 export const getMovieById = async (id: string):Promise<IMovieDetails> =>
