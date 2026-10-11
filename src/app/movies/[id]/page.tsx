@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {getMovieById} from "@/src/services/movie.api.service";
 import GenreBadge from "@/src/components/genreComponents/GenreBadge";
 import Link from "next/link";
+import { notFound } from 'next/navigation';
 
 interface IMovieIDProps {
     params: Promise<{id: string}>;
@@ -9,7 +10,19 @@ interface IMovieIDProps {
 
 const MovieIdPage: FC<IMovieIDProps> = async ({params}) => {
     const {id} = await params;
-    const movie = await getMovieById(id);
+    let movie;
+    try {
+        movie = await getMovieById(id);
+    } catch (error) {
+        if (
+            error instanceof Error &&
+            error.message.includes('TMDB error 404:')
+        ) {
+            notFound();
+        }
+
+        throw error;
+    }
 
     return (
         <div className="min-h-screen bg-[#0B0914] text-white">
@@ -120,13 +133,7 @@ const MovieIdPage: FC<IMovieIDProps> = async ({params}) => {
                             </h2>
 
                             <div className="flex flex-wrap gap-2">
-                                {movie.genres.map(genre => (
-                                    <GenreBadge
-                                        key={genre.id}
-                                        genre={genre}
-                                        clickable={false}
-                                    />
-                                ))}
+                                {movie.genres.map(genre => (<GenreBadge key={genre.id} genre={genre} clickable={false}/>))}
                             </div>
                         </div>
 

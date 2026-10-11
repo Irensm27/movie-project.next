@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Movies App — це вебзастосунок для перегляду фільмів, створений на Next.js із використанням TypeScript, Tailwind CSS та The Movie Database (TMDB) API.
 
-## Getting Started
+Застосунок дозволяє переглядати фільми, шукати їх за назвою, сортувати за популярністю, рейтингом і датою виходу, фільтрувати за жанрами та переглядати детальну інформацію про кожен фільм.
 
-First, run the development server:
+## Запуск проєкту
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Клонувати репозиторій:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Перейти до папки проєкту:
+   ```bash
+   cd nextjs
+   ```
+3. Встановити залежності:
+   ```bash
+   npm install
+   ```
+4. У корені проєкту створити файл `.env`.
+5. Додати токен для роботи з TMDB API:
+   ```env
+   TMDB_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NTEyZGQzOTQzODhiMDRkNWJhZDBiZWQxNWI5ZjFkZSIsIm5iZiI6MTc4ODEwNDY5MS42MDMwMDAyLCJzdWIiOiI2YTk0NGZmMzAxYjA5MmEyN2M0MjU0N2MiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ataDkmNWWaVcnCErir5XgotxA-Ws2JgCDlqHwfYK50I
+   ```
+6. Запустити проєкт у режимі розробки:
+   ```bash
+   npm run dev
+   ```
+7. Відкрити в браузері адресу:
+   `http://localhost:3000`
+## Сторінки
+
+### Головна сторінка з фільмами
+
+URL: `/`
+
+На головній сторінці розміщені:
+
+- Header;
+- інформація про користувача;
+- пошук фільмів;
+- сортування фільмів;
+- банер із фільмами з високим рейтингом;
+- список жанрів;
+- список фільмів;
+- картки фільмів із постерами, рейтингами та жанрами;
+- пагінація.
+
+Основні можливості:
+
+- пошук фільмів за повною назвою або її частиною;
+- сортування за популярністю, рейтингом і датою виходу;
+- фільтрація фільмів за жанрами;
+- перехід між сторінками списку фільмів;
+- перехід до сторінки детальної інформації про вибраний фільм.
+
+Параметри пошуку, сортування, жанру та сторінки передаються через URL, що дозволяє зберігати поточний стан фільтрації під час навігації.
+### Сторінка окремого фільму
+URL: `/movies/[id]`
+
+Наприклад: `/movies/550`
+
+На сторінці відображається детальна інформація про вибраний фільм:
+- назва;
+- фонове зображення;
+- постер;
+- рейтинг;
+- жанри;
+- дата виходу;
+- кількість голосів;
+- тривалість фільму;
+- опис.
+Кнопка Back to movies дозволяє повернутися до списку фільмів.
+
+## Структура компонентів
+
+Основна структура компонентів проєкту:
+
+```text
+RootLayout
+└── MoviesPage
+    ├── Header
+    │   ├── Search
+    │   ├── Sort
+    │   └── UserInfo
+    ├── MovieBanner
+    ├── GenreButtonComponent
+    ├── MoviesList
+    │   └── MovieListCard
+    │       ├── PosterPreview
+    │       ├── StarsRating
+    │       └── MovieInfo
+    │           └── GenreBadge
+    └── Pagination
+
+MovieDetailsPage
+└── Детальна інформація про фільм
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Основний функціонал
 
-You can start editing the page by modifying `src/app`. The page auto-updates as you edit the file.
+У проєкті реалізовано:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- отримання списку фільмів із TMDB API;
+- отримання списку жанрів;
+- отримання фільмів із високим рейтингом для банера;
+- пошук фільмів за назвою;
+- сортування за популярністю, рейтингом і датою виходу;
+- фільтрацію за жанрами;
+- пагінацію списку фільмів;
+- перегляд детальної інформації про фільм за його ID;
+- навігацію між головною сторінкою та сторінками окремих фільмів;
+- повторне використання компонентів для відображення інформації про фільми.
 
-## Learn More
+## API
 
-To learn more about Next.js, take a look at the following resources:
+Для отримання інформації про фільми використовується The Movie Database (TMDB) API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Base URL: https://api.themoviedb.org/3
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Запити до API виконуються за допомогою серверних функцій із використанням `fetch`. Для кешування даних використовується механізм Next.js.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Дані про фільми надаються сервісом [The Movie Database (TMDB)](https://www.themoviedb.org/).

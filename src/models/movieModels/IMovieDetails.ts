@@ -9,6 +9,6 @@ export interface IMovieDetails {
     release_date: string;
     vote_average: number;
     vote_count: number;
-    runtime: number;
+    runtime: number | null;
     genres: IGenre[];
 }
