@@ -29,10 +29,10 @@ const GenreButtonComponent = ({genres}: IGenreFilterProps) => {
             <button
                 onClick={() => router.push('/movies')}
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-    !currentGenre
-        ? 'border-violet-400 bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-md shadow-purple-900/20'
-        : 'border-purple-500/30 bg-[#171126] text-purple-200 hover:border-violet-400/60 hover:bg-purple-500/20 hover:text-white'
-}`}
+                    !currentGenre
+                        ? 'border-violet-400 bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-md shadow-purple-900/20'
+                        : 'border-purple-500/30 bg-[#171126] text-purple-200 hover:border-violet-400/60 hover:bg-purple-500/20 hover:text-white'
+                }`}
             >
                 All
             </button>
@@ -45,10 +45,10 @@ const GenreButtonComponent = ({genres}: IGenreFilterProps) => {
                         key={genre.id}
                         onClick={() => handleGenre(String(genre.id))}
                         className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-    isActive
-        ? 'border-violet-400 bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-md shadow-purple-900/20'
-        : 'border-purple-500/30 bg-[#171126] text-purple-200 hover:border-violet-400/60 hover:bg-purple-500/20 hover:text-white'
-}`}
+                            isActive
+                                ? 'border-violet-400 bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-md shadow-purple-900/20'
+                                : 'border-purple-500/30 bg-[#171126] text-purple-200 hover:border-violet-400/60 hover:bg-purple-500/20 hover:text-white'
+                        }`}
                     >
                         {genre.name}
                     </button>

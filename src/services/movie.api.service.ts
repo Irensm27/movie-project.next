@@ -1,4 +1,3 @@
-
 import {IMovieResponse} from "@/src/models/movieModels/IMovieResponse";
 import {IMovieDetails} from "@/src/models/movieModels/IMovieDetails";
 import {IGenreResponse} from "@/src/models/genreModels/IGenreResponse";
@@ -10,7 +9,7 @@ const fetchTmdb = async <T>(endpoint: string): Promise<T> => {
         headers: {
             Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
         },
-        next: { revalidate: 3600 },
+        next: {revalidate: 3600},
     });
 
     if (!res.ok) {
@@ -28,11 +27,9 @@ interface IMovieFilters {
 }
 
 export const getMovies = async ({page = 1, query, sortBy, genre,}: IMovieFilters): Promise<IMovieResponse> => {
-
     const params = new URLSearchParams();
 
     params.set('page', String(page));
-
 
     if (query) {
         params.set('with_text_query', query);
@@ -58,19 +55,16 @@ export const getMovies = async ({page = 1, query, sortBy, genre,}: IMovieFilters
 
     return await fetchTmdb<IMovieResponse>(
         `/discover/movie?${params.toString()}`
-
-
     );
-
 
 };
 
-export const getMovieById = async (id: string):Promise<IMovieDetails> =>
+export const getMovieById = async (id: string): Promise<IMovieDetails> =>
     await fetchTmdb<IMovieDetails>(`/movie/${id}`);
 
-export const getGenres = async ():Promise<IGenreResponse>=>
+export const getGenres = async (): Promise<IGenreResponse> =>
     await fetchTmdb<IGenreResponse>('/genre/movie/list');
 
-export const getTopRatedMovies = async (page: number = 1):Promise<IMovieResponse> =>
+export const getTopRatedMovies = async (page: number = 1): Promise<IMovieResponse> =>
     await fetchTmdb<IMovieResponse>(`/movie/top_rated?page=${page}`);
 

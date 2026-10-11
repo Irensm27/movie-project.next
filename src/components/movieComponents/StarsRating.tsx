@@ -4,7 +4,7 @@ type StarsRatingProps = {
     rating: number;
 };
 
-const StarsRating:FC<StarsRatingProps> = ({rating}) => {
+const StarsRating: FC<StarsRatingProps> = ({rating}) => {
     const stars = Math.round(rating / 2);
 
     return (

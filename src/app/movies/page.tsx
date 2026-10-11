@@ -15,8 +15,8 @@ interface IParamsProps {
     }>;
 }
 
-const MoviesPage: FC<IParamsProps> = async ({ searchParams }) => {
-    const { page, query, sort, genre } = await searchParams;
+const MoviesPage: FC<IParamsProps> = async ({searchParams}) => {
+    const {page, query, sort, genre} = await searchParams;
 
     const currentPage = Math.max(1, Number(page) || 1);
 
@@ -36,7 +36,6 @@ const MoviesPage: FC<IParamsProps> = async ({ searchParams }) => {
         <main className="min-h-screen bg-[#0B0914] text-white">
 
             <Header />
-
             <MovieBanner movies={topMovies.results} />
 
             <section className="mx-auto max-w-7xl px-4 pt-8 sm:px-6">
@@ -67,8 +66,7 @@ const MoviesPage: FC<IParamsProps> = async ({ searchParams }) => {
 
                 <MoviesList
                     movies={movies.results}
-                    genres={genres.genres}
-                />
+                    genres={genres.genres}/>
 
                 <div className="mt-10 flex justify-center">
                     <Pagination
@@ -76,8 +74,7 @@ const MoviesPage: FC<IParamsProps> = async ({ searchParams }) => {
                         totalPages={totalPages}
                         query={query}
                         sort={sort}
-                        genre={genre}
-                    />
+                        genre={genre}/>
                 </div>
             </section>
 

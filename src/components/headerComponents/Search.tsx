@@ -32,10 +32,10 @@ const Search = () => {
     return (
         <form
             onSubmit={handleSearch}
-            className="flex w-full max-w-md items-center gap-2"
-        >
+            className="flex w-full max-w-md items-center gap-2">
 
-            <div className="flex flex-1 items-center rounded-xl border border-purple-500/30 bg-[#171126] transition focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500/20">
+            <div
+                className="flex flex-1 items-center rounded-xl border border-purple-500/30 bg-[#171126] transition focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500/20">
 
                 <span className="pl-3 text-purple-300">
                     <svg
@@ -47,10 +47,9 @@ const Search = () => {
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round"
-                    >
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.35-4.35" />
+                        strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
                     </svg>
                 </span>
 
@@ -66,8 +65,7 @@ const Search = () => {
 
             <button
                 type="submit"
-                className="rounded-xl bg-gradient-to-r from-violet-600 to-purple-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/20 transition hover:from-violet-500 hover:to-purple-400 active:scale-95"
-            >
+                className="rounded-xl bg-gradient-to-r from-violet-600 to-purple-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-900/20 transition hover:from-violet-500 hover:to-purple-400 active:scale-95">
                 Search
             </button>
 

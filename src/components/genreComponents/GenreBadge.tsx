@@ -10,7 +10,8 @@ interface IGenreBadgeProps {
 const GenreBadge: FC<IGenreBadgeProps> = ({genre, clickable = true}) => {
     if (!clickable) {
         return (
-            <div className="rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-200">
+            <div
+                className="rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-200">
                 {genre.name}
             </div>
         );

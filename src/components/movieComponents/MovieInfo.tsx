@@ -1,6 +1,6 @@
-import { IMovie } from "@/src/models/movieModels/IMovie";
-import type { FC } from "react";
-import { IGenre } from "@/src/models/genreModels/IGenre";
+import {IMovie} from "@/src/models/movieModels/IMovie";
+import type {FC} from "react";
+import {IGenre} from "@/src/models/genreModels/IGenre";
 import GenreBadge from "@/src/components/genreComponents/GenreBadge";
 
 interface IMovieInfoProps {
@@ -8,11 +8,8 @@ interface IMovieInfoProps {
     genres: IGenre[];
 }
 
-const MovieInfo: FC<IMovieInfoProps> = ({ movie, genres }) => {
-
-    const movieGenres = genres.filter(genre =>
-        movie.genre_ids.includes(genre.id)
-    );
+const MovieInfo: FC<IMovieInfoProps> = ({movie, genres}) => {
+    const movieGenres = genres.filter(genre => movie.genre_ids.includes(genre.id));
 
     return (
         <div>
@@ -28,12 +25,7 @@ const MovieInfo: FC<IMovieInfoProps> = ({ movie, genres }) => {
 
 
             <div className="flex flex-wrap gap-2">
-                {movieGenres.map(genre => (
-                    <GenreBadge
-                        genre={genre}
-                        key={genre.id}
-                    />
-                ))}
+                {movieGenres.map(genre => (<GenreBadge genre={genre} key={genre.id}/>))}
             </div>
         </div>
     );

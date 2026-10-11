@@ -8,7 +8,8 @@ const Header = () => {
             <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-6 px-6 py-5">
 
                 <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-purple-500/20">
+                    <div
+                        className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 shadow-lg shadow-purple-500/20">
                         <span className="text-xl">🎬</span>
                     </div>
 
@@ -24,12 +25,12 @@ const Header = () => {
                 </div>
 
                 <div className="flex flex-1 flex-wrap items-center justify-center gap-4">
-                    <Search />
-                    <Sort />
+                    <Search/>
+                    <Sort/>
                 </div>
 
                 <div className="flex items-center rounded-full border border-purple-500/20 bg-[#171126] px-3 py-2">
-                    <UserInfo />
+                    <UserInfo/>
                 </div>
 
             </div>

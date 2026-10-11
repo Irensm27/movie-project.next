@@ -20,8 +20,7 @@ const Pagination = ({currentPage, totalPages, query, sort, genre}: IPaginationPr
     const endPage = Math.min(totalPages, currentPage + 2);
 
     for (let page = startPage; page <= endPage; page++) {
-        pages.push(page);
-    }
+        pages.push(page);}
 
     const createUrl = (page: number) => {
         return `?page=${page}${
@@ -39,23 +38,21 @@ const Pagination = ({currentPage, totalPages, query, sort, genre}: IPaginationPr
             {currentPage > 1 && (
                 <Link
                     href={createUrl(currentPage - 1)}
-                    className="px-3 py-1 rounded border"
-                >
+                    className="px-3 py-1 rounded border">
                     ←
                 </Link>
             )}
 
             {startPage > 1 && (
-                <>
+                <div>
                     <Link
                         href={createUrl(1)}
-                        className="px-3 py-1 rounded border"
-                    >
+                        className="px-3 py-1 rounded border">
                         1
                     </Link>
 
                     {startPage > 2 && <span>...</span>}
-                </>
+                </div>
             )}
 
             {pages.map((page) => (
@@ -66,30 +63,26 @@ const Pagination = ({currentPage, totalPages, query, sort, genre}: IPaginationPr
                         page === currentPage
                             ? "bg-yellow-400 text-black"
                             : ""
-                    }`}
-                >
+                    }`}>
                     {page}
                 </Link>
             ))}
 
             {endPage < totalPages && (
-                <>
+                <div>
                     {endPage < totalPages - 1 && <span>...</span>}
-
                     <Link
                         href={createUrl(totalPages)}
-                        className="px-3 py-1 rounded border"
-                    >
+                        className="px-3 py-1 rounded border">
                         {totalPages}
                     </Link>
-                </>
+                </div>
             )}
 
             {currentPage < totalPages && (
                 <Link
                     href={createUrl(currentPage + 1)}
-                    className="px-3 py-1 rounded border"
-                >
+                    className="px-3 py-1 rounded border">
                     →
                 </Link>
             )}
