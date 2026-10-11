@@ -21,12 +21,7 @@ const MoviesPage: FC<IParamsProps> = async ({searchParams}) => {
     const currentPage = Math.max(1, Number(page) || 1);
 
     const [movies, genres, topMovies] = await Promise.all([
-        getMovies({
-            page: currentPage,
-            query,
-            sortBy: sort,
-            genre,
-        }),
+        getMovies({page: currentPage, query, sortBy: sort, genre,}),
         getGenres(),
         getTopRatedMovies(),
     ]);
