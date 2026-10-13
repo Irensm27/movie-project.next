@@ -31,8 +31,12 @@ export const getMovies = async ({page = 1, query, sortBy, genre,}: IMovieFilters
 
     params.set('page', String(page));
 
-    if (query) {
-        params.set('with_text_query', query);
+    if (query?.trim()) {
+        params.set('query', query.trim());
+
+        return await fetchTmdb<IMovieResponse>(
+            `/search/movie?${params.toString()}`
+        );
     }
 
     if (sortBy) {

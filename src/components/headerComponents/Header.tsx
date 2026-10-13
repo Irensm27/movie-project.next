@@ -1,6 +1,7 @@
 import Search from "@/src/components/headerComponents/Search";
 import Sort from "@/src/components/headerComponents/Sort";
 import UserInfo from "@/src/components/headerComponents/UserInfo";
+import Link from "next/link";
 
 const Header = () => {
     return (
@@ -13,6 +14,7 @@ const Header = () => {
                         <span className="text-xl">🎬</span>
                     </div>
 
+                <Link href="/movies">
                     <div>
                         <h1 className="text-2xl font-extrabold tracking-tight text-white">
                             Movie<span className="text-violet-400">Verse</span>
@@ -22,7 +24,9 @@ const Header = () => {
                             Your cinema universe
                         </p>
                     </div>
+                </Link>
                 </div>
+
 
                 <div className="flex flex-1 flex-wrap items-center justify-center gap-4">
                     <Search/>

@@ -3,6 +3,7 @@ import {getMovieById} from "@/src/services/movie.api.service";
 import GenreBadge from "@/src/components/genreComponents/GenreBadge";
 import Link from "next/link";
 import { notFound } from 'next/navigation';
+import Header from "@/src/components/headerComponents/Header";
 
 interface IMovieIDProps {
     params: Promise<{id: string}>;
@@ -26,6 +27,7 @@ const MovieIdPage: FC<IMovieIDProps> = async ({params}) => {
 
     return (
         <div className="min-h-screen bg-[#0B0914] text-white">
+            <Header/>
 
             <div className="relative h-[55vh] min-h-[400px] max-h-[650px] w-full overflow-hidden bg-[#171126]">
 
